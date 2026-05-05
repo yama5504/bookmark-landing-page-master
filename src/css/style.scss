@@ -77,6 +77,18 @@ a {
     margin: 0 auto;
 }
 
+.fade-in {
+    opacity: 0;
+    transform: translateY(80px);
+    transition: opacity 1.2s cubic-bezier(0.33, 1, 0.68, 1), transform 1.2s cubic-bezier(0.33, 1, 0.68, 1);
+    will-change: opacity, transform;
+}
+
+.fade-in.is-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 @media screen and (min-width:768px) {
     body {
@@ -111,6 +123,14 @@ a {
         padding: 1.5vw 0;
         width: 14.84vw;
         border-radius: 0.65vw;
+    }
+
+    .delay-200 {
+        transition-delay: 0.2s;
+    }
+    
+    .delay-400 {
+        transition-delay: 0.4s;
     }
 }
 

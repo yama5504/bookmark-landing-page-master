@@ -9,10 +9,10 @@ menuBtn.addEventListener('click', () => {
     menuBtn.setAttribute('aria-expanded', String(willOpen));
 
     if (willOpen) {
-        menuIcon.src = '/images/icon-close.svg';
+        menuIcon.src = './images/icon-close.svg';
         menuIcon.alt = 'メニューを閉じる';
     } else {
-        menuIcon.src = '/images/icon-hamburger.svg';
+        menuIcon.src = './images/icon-hamburger.svg';
         menuIcon.alt = 'メニューを開く';
     }
 });
@@ -86,4 +86,25 @@ triggers.forEach(trigger => {
       });
     }
   });
+});
+
+//フェードイン
+const fadeElements = document.querySelectorAll('.fade-in');
+
+const options = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-active');
+      observer.unobserve(entry.target);
+    }
+  });
+}, options);
+fadeElements.forEach(el => {
+  observer.observe(el);
 });
