@@ -82,11 +82,13 @@ a {
     transform: translateY(80px);
     transition: opacity 1.2s cubic-bezier(0.33, 1, 0.68, 1), transform 1.2s cubic-bezier(0.33, 1, 0.68, 1);
     will-change: opacity, transform;
+    pointer-events: none;
 }
 
 .fade-in.is-active {
     opacity: 1;
     transform: translateY(0);
+    pointer-events: auto;
 }
 
 
@@ -775,7 +777,7 @@ header {
         li {
             padding: 6.93vw 0 8.53vw;
             border-radius: 4vw;
-            box-shadow: 0 2.66vw 5.33vw rgba(82,103,223,0.05);
+            box-shadow: 0 10px 20px rgba(82,103,223,0.05);
             text-align: center;
             margin-bottom: 10.66vw;
 

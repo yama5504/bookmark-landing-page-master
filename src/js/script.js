@@ -22,7 +22,7 @@ headerLinks.forEach(link => {
         if (header.classList.contains('is-active')) {
             header.classList.remove('is-active');
             menuBtn.setAttribute('aria-expanded', 'false');
-            menuIcon.src = '/images/icon-hamburger.svg';
+            menuIcon.src = './images/icon-hamburger.svg';
             menuIcon.alt = 'メニューを開く';
         }
     });
