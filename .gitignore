@@ -1,40 +1,40 @@
-# Design files (please do not remove 🙂)
-*.sketch
-*.fig
-*.xd
+# Logs (各種ログファイル)
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Dependencies
-/node_modules
+# Dependencies (パッケージ関連)
+/node_modules/
 /.pnp
 .pnp.js
-yarn.debug.log*
-yarn.error.log*
-npm-debug.log*
 
-# Environment and secrets
+# Production / Build outputs (ビルド成果物)
+/dist/
+/build/
+
+# Environment and secrets (環境変数・機密情報)
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+*.pem
 
-# Testing
-/coverage
-
-# Production
-/build
-/dist
-/.next
-/out
-
-# IDEs and editors
-/.idea
-/.vscode
+# IDEs and editors (エディタ・ツール依存のキャッシュ)
+/.vscode/
+/.idea/
 *.swp
 *.swo
 
-# Misc
-*.log
-*.pem
+# Design files (デザインカンプ用ファイル)
+*.sketch
+*.fig
+*.xd
+
+# OS generated files (OS自動生成ファイル)
 .DS_Store
+.DS_Store?
+._*
 Thumbs.db
+ehthumbs.db
