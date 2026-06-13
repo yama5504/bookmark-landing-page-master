@@ -45,15 +45,22 @@
 ## 開発プロセス
 ### ディレクトリ構造
 
-Viteの静的アセット管理およびSassのコンパイラ環境に準拠し、関心の分離（Separation of Concerns）を意識したクリーンなディレクトリ設計を行っています。
+Viteの静的アセット管理およびSassのコンパイラ環境に準拠し、関心の分離（Separation of Concerns）を意識したクリーンなディレクトリ設計を行っています。なお、ローカル環境の膨大な依存ライブラリ（`node_modules/`）は `.gitignore` を用いて厳密にGit管理対象から除外しています。
 
 ```text
 .
+├── .gitignore               # Git管理除外設定（node_modules等の除外）
+├── README.md                # 本ドキュメント
 ├── index.html               # メインHTML（エントリーポイントからJSを呼び出し）
+├── package.json             # プロジェクト依存関係・各種スクリプト定義
+├── package-lock.json        # 依存ライブラリのバージョンロック
+├── preview.jpg              # README表示用のプレビュー画像
 ├── vite.config.js           # Vite設定ファイル
-├── public/
-│   └── images/              # 画像・アイコン等の静的アセット
-└── src/
+├── design/                  # 支給されたデザインカンプ・仕様イメージ（Git管理）
+│   └── *.jpg                # 各画面・状態のレイアウト画像
+├── public/                  # 成果物にそのままコピーされる静的アセット
+│   └── images/              # ロゴ、アイコン、背景用SVG等
+└── src/                     # ソースコードを集約する開発用ディレクトリ
     ├── main.js              # 全体統合用のメインJS
     ├── css/
     │   └── style.scss       # 各種状態定義・コンポーネントを包括するSCSS
