@@ -928,10 +928,6 @@ header {
                 color: var(--blue1);
                 line-height: 1.65;
                 position: relative;
-
-                &:hover {
-                    color: var(--red);
-                }
                 
                 svg {
                     color: #5267DF;
@@ -1013,6 +1009,10 @@ header {
                 .ac-trigger {
                     padding: 1.11vw 0;
                     font-size: 1.25vw;
+
+                    &:hover {
+                        color: var(--red);
+                    }
 
                     svg {
                         top: 1.6vw;
