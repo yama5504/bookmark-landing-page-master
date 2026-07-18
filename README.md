@@ -1,6 +1,6 @@
 # Frontend Mentor - ブックマーク ランディングページ（実装済コード）
 
-これは [Frontend Mentor の Bookmark landing page チャレンジ](https://www.frontendmentor.io/challenges/bookmark-landing-page-5d0b588a9edda32581d29158) に対する解決策（実装コード）です。実務レベルのデザインカンプをもとに、WAI-ARIAに準拠したアクセシビリティ設計、`vw` 単位を駆使した流体レスポンシブ、そして Vanilla JS による高度なDOMアニメーション制御を融合させ、妥協のないモダンなUI/UXを実装しました。
+これは [Frontend Mentor の Bookmark landing page チャレンジ](https://www.frontendmentor.io/challenges/bookmark-landing-page-5d0b588a9edda32581d29158) に対する解決策（実装コード）です。実務レベルのデザインカンプをもとに、WAI-ARIAに準拠したアクセシビリティ設計、`vw` 単位を駆使した流体レスポンシブ、そして Vanilla JS による適切なDOM操作とCSSを組み合わせ、仕様に沿ったスムーズなUIを実装しました。
 
 ## 目次
 
@@ -25,7 +25,7 @@
 ユーザーは以下の操作・表示確認が可能です：
 
 - **フルレスポンシブ・流体レイアウト:** スマートフォン、タブレット、PC（1440px〜）それぞれの閲覧環境において、画面幅に応じて滑らかに縮尺が可変（Fluid）するレイアウト。
-- **アクセシブルかつ高度なインタラクティブUI（Vanilla JS）:**
+- **アクセシブルかつJavaScriptを用いたインタラクティブUI（Vanilla JS）:**
   - **ハンバーガーメニュー:** モバイル環境におけるナビゲーションの開閉。開閉状態に応じた `aria-expanded` の制御、および画像アセット（`src` / `alt` 属性）の動的切り替え。下層リンククリック時の自動クローズ処理を完備。
   - **タブメニュー（Features）:** `role="tab"` / `role="tabpanel"` の関係性を保持し、`aria-selected` と `hidden` 属性を用いてアクセシブルにコンテンツを切り替え。
   - **アコーディオン（FAQ）:** `scrollHeight` を用いた動的な高さ計算と、非表示処理（`hidden`）のライフサイクルを考慮した、一切のカクつきがないスムーズな開閉アニメーション。
@@ -80,7 +80,7 @@ Viteの静的アセット管理およびSassのコンパイラ環境に準拠し
 
 **2. WAI-ARIAに準拠したセマンティック・インタラクション（JS）**
 
-単に見栄え（CSS）を切り替えるだけでなく、スクリーンリーダーやキーボード操作を行うユーザーにもWebアプリケーションの正確な状態が伝わるよう、JavaScriptによる支援技術（A11y）のコントロールを徹底しました。
+単に見栄え（CSS）を切り替えるだけでなく、スクリーンリーダーやキーボード操作を行うユーザーにもWebアプリケーションの正確な状態が伝わるよう、JavaScriptによる支援技術（A11y）の意識した実装を行いました。
 
 - ハンバーガーメニュー開閉時の aria-expanded の論理値（true/false）の動的同期。
 - タブ切り替え時における aria-selected と hidden 属性の一貫した制御。
@@ -88,11 +88,10 @@ Viteの静的アセット管理およびSassのコンパイラ環境に準拠し
 
 **3. アニメーションライフサイクルと描画最適化（JS × SCSS）**
 
-ブラウザのレンダリング負荷（レイアウトシフトやメインスレッドの占有）を極限まで抑えるため、以下の高度なロジックを実装しています。
+ブラウザの描画負荷を抑えるため、以下の実装アプローチをとっています。
 
-- アコーディオンの流暢な開閉制御:
-展開時は、一瞬 hidden = false を外して要素の正確な scrollHeight（内包するコンテンツの高さ）を算出し、requestAnimationFrame を用いて次の描画フレームで max-height を更新することで、CSSトランジションを確実に発火させています。
-さらに、transitionend イベントを監視してアニメーション完了後に不要となったインラインスタイルを removeProperty で即座に破棄。重複発火やメモリリークを防ぐために、リスナー自身をその場で解除（removeEventListener）するカプセル化を行っています。
+- アコーディオン（FAQ）:
+scrollHeight（コンテンツの高さ）をJavaScriptで動的に計算し、CSS transitionと組み合わせることで、カクつきのないスムーズな開閉アニメーションを実装。
 
 - Intersection Observer API によるスクロール演出最適化:
 スクロール連動のフェードイン演出（.fade-in）には、従来の window.addEventListener('scroll') による過剰な発火を避け、ブラウザに最適化された交差監視APIを採用。要素が画面内（交差閾値 10%）に入った瞬間に .is-active クラスを付与し、さらに即座に observer.unobserve(entry.target) を実行して監視を終了させることで、無駄なイベント発火を一切排除し、ページの描画パフォーマンスを最大化しました。
