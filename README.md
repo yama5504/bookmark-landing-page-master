@@ -1,6 +1,6 @@
 # Frontend Mentor - ブックマーク ランディングページ（実装済コード）
 
-これは [Frontend Mentor の Bookmark landing page チャレンジ](https://www.frontendmentor.io/challenges/bookmark-landing-page-5d0b588a9edda32581d29158) に対する実装コードです。支給されたデザインカンプをもとに、WAI-ARIAの各種属性を用いたマークアップ、`vw` や `clamp()` を用いたレスポンシブ対応、および Vanilla JS とCSSを組み合わせたUIインタラクションの実装を行いました。
+これは [Frontend Mentor の Bookmark landing page チャレンジ](https://www.frontendmentor.io/challenges/bookmark-landing-page-5d0b588a9edda32581d29158) に対する実装コードです。支給されたデザインカンプをもとに、WAI-ARIAの各種属性を用いたマークアップ、`vw` やメディアクエリを用いた流体レスポンシブ対応、および Vanilla JS とCSSを組み合わせたUIインタラクションの実装を行いました。
 
 ## 目次
 
